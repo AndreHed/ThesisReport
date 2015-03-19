@@ -1,0 +1,60 @@
+%!TEX root = report.tex
+
+\section{Introduction}
+
+% \subsection{Hydro-Electric Power}
+Hydro-power is the worlds largest renewable energy source, and hydroelectric power plants have been developed and used since the nineteenth century. During the last decade hydro-power amount to 45 percent of the total electricity production in Sweden~\cite{scb}. Many of the hydro-power plants in Sweden were built several decades ago, and they are therefore in need of refurbishment and modernisation. A conventional hydro-power plant consist of a dam, turbine and a generator. The dam creates a water reservoir that contains the potential energy which drives the turbine and generator.
+
+% \subsection{Andritz Hydro}
+The ANDRITZ GROUP provides services mainly for the hydro-power, the pulp and paper, and the metals industries, with headquarters in Graz, Austria and approximately \num{24500} employees worldwide. ANDRITZ HYDRO is a supplier of electromechanical equipment for hydro-power plants, and the Swedish subsidiary ANDRITZ HYDRO AB has 160 employees and focuses mainly on refurbishment and optimisation of turbines and generators.
+
+% Write about the 'product realization process'
+Turbines and generators are advanced electromechanical equipment, and since hydroelectric power plants need to reliably operate under long terms, the realisation process is rigorous. At ANDRITZ HYDRO AB the design, analysis and manufacturing is performed. The design process is done through CAD (Computer Aided Design) and the analysis through CAE (Computer Aided Engineering). Siemens NX software is a design, engineering and manufacturing solution, and at Andritz Hydro AB it is mainly used for CAD. For the analysis the Salome platform is used with Code Aster as solver.
+
+% Write about why the work-flow is problematic at Andritz
+In general, a significant amount of time is spent on preparing model for the simulation -- usually more than the actual solver run -- it is therefore important to make the pre-processing as effective as possible.
+
+At Andritz Hydro AB the work-flow of the modernization process is in some aspects cumbersome and convoluted, and a more streamlined work-flow is desired. Some of the difficulties occur solely because of that two different soft-wares are used for CAD and CAE, and other difficulties are generically inherited from the soft-wares that are used. 
+
+The main purpose of this thesis is to evaluate the current work-flow at Andritz Hydro AB, and suggest improvements that will significantly affect the work-flow to the better. The first evaluation of the work-flow is concerned with larger strategical improvements, such as integrating the design and analysis process to the same software. The second evaluation is concerned with smaller improvements that try to simplify cumbersome processes within the soft-wares.
+
+Since the product realisation process is complex, it is not certain that there exist feasible solutions that improves the work-flow. It is also not guaranteed that the soft-wares provides functionality such that processes can be simplified.
+
+
+%\subsection{Finite Element Analysis}
+%
+%\subsection{Finite Element Analysis at ANDRITZ} \label{sec:feaandritz}
+%
+%When a part is subject to an analysis the calculation engineer start with a part in NX. The part is idealised by removing smaller holes, chamfers and fillets that are non-essential for the analysis. Idealising the part can be done with the synchronous modeling commands that are availible in NX. The part is now exported as a \texttt{.step} file that contains the geometrical description of the part.
+%
+%The \texttt{.step} file is imported into Salome-Meca a software platform for pre- and postprocessing. The idealisation that is done in NX is the first step in the preprocessing of the part. The next step is to create the necessary groups where boundary conditions and loads will be applied. The final step of the preprocess is to mesh the part, the part needs to be divided into a set of elements that describe the original model in accurately. The part is now exported from Salome-Meca, a text file that describes the geometry, the mesh and the defined groups is produced.
+%
+%The next part of the analyses is to solve the case by first defining the boundary conditions, load cases and physical properties that are needed to create a tractable model. These steps are done with command-line driven open source FEM package called Code Aster. The text file that Salome-Meca produced descibes the geometry, mesh and groups that adheres to the \texttt{.unv} format, this format is not preffered by Code Aster, therefore the \texttt{.unv} file is converted to a \texttt{.mail} file. The case setup is described in a \texttt{.comm} file that is read by Code Aster.
+%
+%The postprocessing is performed in Salome-Meca where the results created by Code Aster is imported. The final analysis of the results are visualised as needed.
+%
+%\begin{figure}
+%	\centering
+%	\rule{2cm}{2cm}
+%	\label{fig:workflow}
+%	\caption{A schematic figure of the workflow at ANDRITZ HYDRO AB for finite element analyses.}
+%\end{figure}
+%
+%\subsection{Goal}
+%The main focus of this thesis is to investigate the possibility to imporove this workflow process, to see if any changes are possible and if they would improve efficiency. There are several perspectives that could be investigated, and the main focus of this thesis will be on:
+%\begin{itemize}
+%	\item NX provides a utility called \emph{Advanced Simulation} that includes the functionality to both create groups and mesh from NX. If \emph{Advanced Simulation} fulfills the requirements of the current process, it would be possible to eliminate several steps from the workflow that is described in section~\ref{sec:feaandritz} and Figure~\ref{fig:workflow}.
+%	\item \emph{Advanced Simulation} also includes the functionality to use some of the eminent solvers Nastran, Abaqus and Ansys. Therefore it is of interest to investigate how this functionality works in NX.
+%\end{itemize}
+%Eventhough the focus of the investigation is to evaluate the technical functionalities of NX and \emph{Advanced Simulation}, it is important to establish that the current NX license that is used at ANDRITZ HYDRO AB does not include the \emph{Advanced Simulation} utility. Therefore, the investigated paths described above would result in an increase of the costs, since the current softwares (Salome-Meca and Code Aster) are open source and free of charge.
+%
+%The investigation will also take another perspective, which is to try and improve the current workflow, without changing any of the main steps. The current workflow contains several exports and imports between different softwares and a general analysis could include several iterations between the calculation team and the design team. During these iterations, small, but significant changes are made on the part that is under analysis. Due to the convoluted workflow it is difficult to reuse the settings and work done on the previous part, therefore the process has to be repeated even if just a small change has been done to the part. This is particularly evident in the preprocessing step in Salome-Meca, where the defined groups and mesh settings are lost between these iterations. 
+%
+%Salome-Meca provides a python API (Application Programming Interface) such that the user might create its own scripts to perform tasks that are not provided by Salome-Meca. With this functionality it is possible to investigate if a script can be written such that it can compare the part from the previous iteration with the new part to see if some of the groups and meshes can be copied to the new part. If this is possible then it would eliminate the nuisance of having to recreate the settings between the iterations.
+%
+%
+%
+
+
+
+

@@ -1,0 +1,54 @@
+\documentclass[10pt,a4paper,draft,twoside,notitlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[backend=biber]{biblatex}
+\usepackage{csquotes}
+\usepackage{siunitx}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\author{Andr\'e Hedlund}
+\title{Thesis}
+
+\bibliography{thesis.bib}
+
+\tikzset{
+	rect/.style={
+	rectangle,
+	minimum size=6mm,
+	very thick,
+	draw=white!20!black!80,
+	top color=white,
+	bottom color=white!50!black!20,
+	% font=\itshape
+	}
+}
+
+
+\begin{document}
+\maketitle
+%\begin{abstract}
+%\end{abstract}
+%\tableofcontents
+
+\input{introduction}
+
+\input{theory}
+
+%\input{analysis}
+
+%\input{discussion}
+
+%\input{conclusions}
+
+% \input{nxguide}
+
+
+\printbibliography
+
+\end{document}
+

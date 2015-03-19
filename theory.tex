@@ -1,0 +1,106 @@
+%!TEX root = report.tex
+
+\section{Theory} % (fold)
+\label{sec:theory}
+This section gives a basic introduction to the Finite Element Method (FEM) for structural mechanics, and describes the different stages of finite element analysis (FEA). It also describes the current analysis work-flow at Andritz Hydro AB, highlighting the processes that are necessary to streamline. After the work-flow description follows a presentation of the software that are utilized for analysis at Andritz Hydro AB.
+
+\subsection{Finite Element Method for Structural Mechanics} % (fold)
+\label{sub:finite_element_method_in_structural_mechanics}
+Here follows a short but descriptive text about FEM.
+When, where and why did it originate?
+Elements
+Mathematical formulation
+System of equations
+
+During the design of structures it is important to analyse if the structure is capable of supporting the applied loads; structural mechanics focuses on the computation of deformations and stresses, to evaluate the performance of the structure. The physical phenomena that are investigated (stress, strain, elasticity etc.) are modelled by differential equations together with a set of boundary conditions. Generally, there exist no analytical solutions to differential equations that relate to complex structures, therefore, the only way to solve the equations are with numerical methods.
+
+The finite element method is as numerical approach that can be used to approximate the solution of boundary value problems. The method has been used rigorously in different engineering disciplines for several decades, and its main advantage over other numerical methods for solving differential equations is its capability to handle complex geometries. The structure is divided into smaller parts, called elements, which together create a discrete mesh of the geometry.~\cite{ottossen92}
+
+(Maybe add section with mathematical FEM description.)
+
+
+\subsubsection{Pre-Processing} % (fold)
+\label{ssub:pre_processing}
+Clean geometry
+Mesh geometry
+Specify load and boundary conditions
+Specify material properties
+
+When a structure has been designed the CAD model needs to be analysed to determine if the desired performance qualifications are reached. The first step of the analysis is the pre-processing, which prepares the model for a computation.
+
+% Clean: FEA book p. 181-191
+Ideally, the CAD model built by the design team is usable for finite element analysis without having to alter the model, this is however often not the case. 
+The model needs to be cleaned of details that are unnecessary for the analysis, such as holes 
+% subsubsection pre_processing (end)
+
+\subsubsection{Solution} % (fold)
+\label{ssub:solution}
+Solve the SOE
+% subsubsection solution (end)
+
+\subsubsection{Post-Processing} % (fold)
+\label{ssub:post_processing}
+Visualise results
+Determine desired quantaties
+% subsubsection post_processing (end)
+
+\subsubsection{Elements} % (fold)
+\label{ssub:elements}
+Describe different types of elements.
+% subsubsection elements (end)
+
+\subsubsection{Boundary Condidtions} % (fold)
+\label{ssub:boundary_condidtions}
+Describe different types of bc's.
+% subsubsection boundary_condidtions (end)
+
+\subsubsection{Load Cases} % (fold)
+\label{ssub:load_cases}
+Maybe not necessary
+% subsubsection load_cases (end)
+
+\subsubsection{Contacts} % (fold)
+\label{ssub:contacts}
+Describe non-linearity, meshing technique etc.
+% subsubsection contacts (end)
+
+% subsection finite_element_method_in_structural_mechanics (end)
+
+\subsection{Analysis Workflow at Andritz} % (fold)
+\label{sub:analysis_workflow_at_andritz}
+% Product development process: FEA p. 12-13
+The design engineers create models with Siemens NX, these models are called \textit{parts} in NX. 
+The current workflow at Andritz Hydro AB is described in Figure~\ref{fig:andritz_workflow}. 
+
+\begin{figure}[t]
+	\begin{center}
+		\begin{tikzpicture}[node distance=5mm]
+			\node[rect] (design)					{Design};
+			\node[rect] (clean)	[below=of design] 	{Model clean-up};
+			\node[rect] (step)	[below=of clean]	{Export part as \texttt{.step} file};
+			\node[rect] (salom)	[below=of step]		{Import to Salomé};
+			\node[rect] (group) [below=of salom] 	{Create groups};
+			\node[rect] (mesh)	[below=of group]	{Create mesh};
+			\node[rect] (mail)	[below=of mesh]		{Export as \texttt{.mail} file};
+			\node[rect] (comm)	[below=of mail]		{Write Code Aster input file};
+			\node[rect] (solve)	[below=of comm]		{Solve};
+			\node[rect] (vis)	[below=of solve]	{Visualise and anlyse results};
+			\path (design)	edge[->]	(clean)
+				  (clean)	edge[->]	(step)
+				  (step)	edge[->]	(salom)
+				  (salom)	edge[->]	(group)
+				  (group)	edge[->]	(mesh)
+				  (mesh)	edge[->]	(mail)
+				  (mail)	edge[->]	(comm)
+				  (comm)	edge[->]	(solve)
+				  (solve)	edge[->]	(vis);
+			\draw [->] (vis.west) -- ++(-.5,0) |- (design.west);
+		\end{tikzpicture}
+	\end{center}
+	\caption{Current analysis workflow at Andritz Hydro AB.}
+	\label{fig:andritz_workflow}
+\end{figure}
+
+
+% subsection analysis_workflow_at_andritz (end)
+% section theory (end)
