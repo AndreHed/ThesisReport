@@ -1,0 +1,45 @@
+%!TEX root = report.tex
+
+\section{Analysis} % (fold)
+\label{sec:analysis}
+The previous section described structural analysis and FEA in general and presented different software programs that can be used in the analysis. This section presents how FEA is performed at Andritz Hydro AB based on the investigation made by the author of this thesis.
+
+\subsection{Analysis Workflow at Andritz} % (fold)
+\label{sub:analysis_workflow_at_andritz}
+% Product development process: FEA p. 12-13
+The structural analysis begins with a CAD model created by the design team. The design engineers at Andritz Hydro AB use Siemens NX to create CAD models, internally in NX these models are called \textit{parts}. The parts are given a reference number to a database where they are stored, and this reference number is passed to the calculation team. As described in Section~\ref{ssub:pre_processing}, the CAD model needs to be cleaned of features that are unnecessary to the analysis, since the cleaning process can change the model significantly it is not appreciated by the design engineers that the model they created is altered, therefore, a copy of this model should be created which can be prepared for analysis. A copy is created by creating a new part in the database that is assigned to the calculation engineer and then using a synchronous modelling tool to link the part created by the design engineer.
+
+The cleaning process is done in NX with the \textit{Synchronous Modeling Toolbar}, which is a very convenient and efficient approach to remove and make changes to an existing CAD model.~\cite{goncharov14}
+
+The current workflow at Andritz Hydro AB is described in Figure~\ref{fig:andritz_workflow}. 
+
+\begin{figure}[t]
+	\begin{center}
+		\begin{tikzpicture}[node distance=5mm]
+			\node[rect] (design)					{Design};
+			\node[rect] (clean)	[below=of design] 	{Model clean-up};
+			\node[rect] (step)	[below=of clean]	{Export part as \texttt{.step} file};
+			\node[rect] (salom)	[below=of step]		{Import to Salomé};
+			\node[rect] (group) [below=of salom] 	{Create groups};
+			\node[rect] (mesh)	[below=of group]	{Create mesh};
+			\node[rect] (mail)	[below=of mesh]		{Export as \texttt{.mail} file};
+			\node[rect] (comm)	[below=of mail]		{Write Code Aster input file};
+			\node[rect] (solve)	[below=of comm]		{Solve};
+			\node[rect] (vis)	[below=of solve]	{Visualise and analyse results};
+			\path (design)	edge[->]	(clean)
+				  (clean)	edge[->]	(step)
+				  (step)	edge[->]	(salom)
+				  (salom)	edge[->]	(group)
+				  (group)	edge[->]	(mesh)
+				  (mesh)	edge[->]	(mail)
+				  (mail)	edge[->]	(comm)
+				  (comm)	edge[->]	(solve)
+				  (solve)	edge[->]	(vis);
+			\draw [->] (vis.west) -- ++(-.5,0) |- (design.west);
+		\end{tikzpicture}
+	\end{center}
+	\caption{Current analysis workflow at Andritz Hydro AB.}
+	\label{fig:andritz_workflow}
+\end{figure}
+% subsection analysis_workflow_at_andritz (end)
+% section analysis (end)

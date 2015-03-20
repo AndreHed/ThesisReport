@@ -2,7 +2,7 @@
 
 \section{Theory} % (fold)
 \label{sec:theory}
-This section gives a basic introduction to the Finite Element Method (FEM) for structural mechanics, and describes the different stages of finite element analysis (FEA). It also describes the current analysis work-flow at Andritz Hydro AB, highlighting the processes that are necessary to streamline. After the work-flow description follows a presentation of the software that are utilized for analysis at Andritz Hydro AB.
+This section gives a basic introduction to the Finite Element Method (FEM) for structural mechanics, and describes the different stages of finite element analysis (FEA). It also describes the current analysis workflow at Andritz Hydro AB, highlighting the processes that are necessary to streamline. After the workflow description follows a presentation of the software that are utilized for analysis at Andritz Hydro AB.
 
 \subsection{Finite Element Method for Structural Mechanics} % (fold)
 \label{sub:finite_element_method_in_structural_mechanics}
@@ -16,32 +16,36 @@ During the design of structures it is important to analyse if the structure is c
 
 The finite element method is as numerical approach that can be used to approximate the solution of boundary value problems. The method has been used rigorously in different engineering disciplines for several decades, and its main advantage over other numerical methods for solving differential equations is its capability to handle complex geometries. The structure is divided into smaller parts, called elements, which together create a discrete mesh of the geometry.~\cite{ottossen92}
 
-(Maybe add section with mathematical FEM description.)
+(Maybe add section with mathematical FEM description. degrees of freedom)
 
 
 \subsubsection{Pre-Processing} % (fold)
 \label{ssub:pre_processing}
-Clean geometry
-Mesh geometry
-Specify load and boundary conditions
-Specify material properties
-
 When a structure has been designed the CAD model needs to be analysed to determine if the desired performance qualifications are reached. The first step of the analysis is the pre-processing, which prepares the model for a computation.
 
 % Clean: FEA book p. 181-191
-Ideally, the CAD model built by the design team is usable for finite element analysis without having to alter the model, this is however often not the case. 
-The model needs to be cleaned of details that are unnecessary for the analysis, such as holes 
+Ideally, the CAD model built by the design team is usable for finite element analysis without having to alter the model, this is however often not the case. It is often necessary to make simplifications to the model in order to create a mesh of the model. Design features that complicate automatic meshing are short edges, sliver faces, small holes, fillets, chamfers etc., and it is necessary to clean the model of these features to enable the automesher to mesh the model. This cleaning process can be both tedious and difficult since it may exist a lot of features and even if a disadvantageous feature is found it may be difficult to remove it; the cleaning process can therefore be very time consuming. It is also important to mention that the simplifications that is performed should not influence the structural capabilities of the model, this could be difficult to assess, but as long as the simplifications are local and not in areas of interest.~\cite[p.~181--191]{adams99}
+
+% Meshing
+When the model is clean, the next step is to mesh the model. Whether the model is meshed automatically or manually and with shell elements or tetrahedrons, the process is an essential step of the analysis. The focus of this thesis is on automeshing with tetrahedrons (for 3D models) and triangles (for 2D models). Automeshing is a simple technique to create a discrete FE model of the CAD model. Depending on which automesher that is used different settings are available, but the user should generally consider the maximum and minimum elements size, growth rate and local mesh refinements. The goal is to create a mesh that captures the structural features of the model with as few elements as possible. Even though the automesher could create the mesh in a fast and convenient way, it is no guarantee that the mesh is sufficiently refined. Therefore, considerable thought should be spent on where local mesh refinements are necessary, how small elements are needed and how large elements are excepted. It is also important to mention that it is an absolute necessity that the model is clean, otherwise the automesher will most likely fail to create a mesh.~\cite[p.~251-255]{adams99}
+
+Part of the pre-process is also to define the boundary conditions that influence the model. There exist two groups of boundary conditions: constraints that prohibits the model of rigid body motion, that is remove spatial degrees of freedom, and loads such as forces, moments and temperature. How the boundary condition are defined and which types that are used are often not straightforward, and an important part of the analysis.~\cite[p.~263]{adams99}
+
+Before the FE model can be solved the material properties of the model needs to be specified.
+
+It is probably obvious that this part of the analysis can be very time consuming, and to obtain a solution it is of paramount importance that the FE model is created correctly, with sufficient details of the original model and that boundary conditions are properly defined.
 % subsubsection pre_processing (end)
 
 \subsubsection{Solution} % (fold)
 \label{ssub:solution}
-Solve the SOE
+When the FE model is created, the next step is to solve the model to obtain the results. This step is mainly executed by the computer, the only effort from the user is setting the correct solver parameters. Which parameters that can be specified is highly dependent on which solver is used. The execution time depends on how large the FE model is (number degrees of freedom) and what solution type is used (non-linear solutions are more demanding).
+
+When the solver is finished it is important to evaluate the results and the solver output to establish if the solution is reasonable and if the results are accurate. To determine if the mesh is sufficiently refined the convergence could be checked, and to check that the boundary conditions are properly defined the resultant forces on the model could be compared with the specified loads.~\cite[p.~303-324]{adams99}
 % subsubsection solution (end)
 
 \subsubsection{Post-Processing} % (fold)
 \label{ssub:post_processing}
-Visualise results
-Determine desired quantaties
+The post-processing first visualise the results (displacement, stress, etc.) to determine if the results are reasonable, then the specific results that are looked for are determined. Even if this step is not very technical, it is important to analyse the results to determine if the reuslts can be trusted.
 % subsubsection post_processing (end)
 
 \subsubsection{Elements} % (fold)
@@ -66,41 +70,14 @@ Describe non-linearity, meshing technique etc.
 
 % subsection finite_element_method_in_structural_mechanics (end)
 
-\subsection{Analysis Workflow at Andritz} % (fold)
-\label{sub:analysis_workflow_at_andritz}
-% Product development process: FEA p. 12-13
-The design engineers create models with Siemens NX, these models are called \textit{parts} in NX. 
-The current workflow at Andritz Hydro AB is described in Figure~\ref{fig:andritz_workflow}. 
+\subsection{Siemens NX} % (fold)
+\label{sub:siemens_nx}
+Write some general about NX and which features that are used. Also write about Advanced Simulation.
+% subsection siemens_nx (end)
 
-\begin{figure}[t]
-	\begin{center}
-		\begin{tikzpicture}[node distance=5mm]
-			\node[rect] (design)					{Design};
-			\node[rect] (clean)	[below=of design] 	{Model clean-up};
-			\node[rect] (step)	[below=of clean]	{Export part as \texttt{.step} file};
-			\node[rect] (salom)	[below=of step]		{Import to Salomé};
-			\node[rect] (group) [below=of salom] 	{Create groups};
-			\node[rect] (mesh)	[below=of group]	{Create mesh};
-			\node[rect] (mail)	[below=of mesh]		{Export as \texttt{.mail} file};
-			\node[rect] (comm)	[below=of mail]		{Write Code Aster input file};
-			\node[rect] (solve)	[below=of comm]		{Solve};
-			\node[rect] (vis)	[below=of solve]	{Visualise and anlyse results};
-			\path (design)	edge[->]	(clean)
-				  (clean)	edge[->]	(step)
-				  (step)	edge[->]	(salom)
-				  (salom)	edge[->]	(group)
-				  (group)	edge[->]	(mesh)
-				  (mesh)	edge[->]	(mail)
-				  (mail)	edge[->]	(comm)
-				  (comm)	edge[->]	(solve)
-				  (solve)	edge[->]	(vis);
-			\draw [->] (vis.west) -- ++(-.5,0) |- (design.west);
-		\end{tikzpicture}
-	\end{center}
-	\caption{Current analysis workflow at Andritz Hydro AB.}
-	\label{fig:andritz_workflow}
-\end{figure}
+\subsection{Salomé Platform} % (fold)
+\label{sub:salom_platform}
+Write about the platform and the possibilities it offers.
+% subsection salom_platform (end)
 
-
-% subsection analysis_workflow_at_andritz (end)
 % section theory (end)
