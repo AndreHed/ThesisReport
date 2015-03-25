@@ -2,16 +2,26 @@
 
 \section{Analysis} % (fold)
 \label{sec:analysis}
-The previous section described structural analysis and FEA in general and presented different software programs that can be used in the analysis. This section presents how FEA is performed at Andritz Hydro AB based on the investigation made by the author of this thesis.
+The previous section described structural analysis and FEA in general and presented different software programs that can be used in the analysis. This section presents how FEA is performed at Andritz Hydro AB based on the investigation made by the author of this thesis. The investigation is the basis of the improvement suggestions that are given in this section.
 
 \subsection{Analysis Workflow at Andritz} % (fold)
 \label{sub:analysis_workflow_at_andritz}
 % Product development process: FEA p. 12-13
-The structural analysis begins with a CAD model created by the design team. The design engineers at Andritz Hydro AB use Siemens NX to create CAD models, internally in NX these models are called \textit{parts}. The parts are given a reference number to a database where they are stored, and this reference number is passed to the calculation team. As described in Section~\ref{ssub:pre_processing}, the CAD model needs to be cleaned of features that are unnecessary to the analysis, since the cleaning process can change the model significantly it is not appreciated by the design engineers that the model they created is altered, therefore, a copy of this model should be created which can be prepared for analysis. A copy is created by creating a new part in the database that is assigned to the calculation engineer and then using a synchronous modelling tool to link the part created by the design engineer.
+The structural analysis begins with a CAD model created by the design team. The design engineers at Andritz Hydro AB use Siemens NX to create CAD models, internally in NX these models are called \textit{parts}. The parts are given a reference number to a database where they are stored, and this reference number is passed on to the calculation team. As described in Section~\ref{ssub:pre_processing}, the CAD model needs to be cleaned of features that are unnecessary to the analysis, since the cleaning process can change the model significantly, it is not appreciated by the design engineers that the model they created is altered, therefore, a copy of this model is created which can be prepared for analysis. A copy is created by creating a new part in the database that is assigned to the calculation engineer and then using a synchronous modelling tool to link the part created by the design engineer.
 
-The cleaning process is done in NX with the \textit{Synchronous Modeling Toolbar}, which is a very convenient and efficient approach to remove and make changes to an existing CAD model.~\cite{goncharov14}
+The cleaning process is done in NX with the synchronous modelling tools that is described in Section~\ref{sub:siemens_nx}. Depending on the detail level of the model that is provided, the amount of work that is needed on the cleaning process can range from very little to a significant part of the entire analysis process. 
 
-The current workflow at Andritz Hydro AB is described in Figure~\ref{fig:andritz_workflow}. 
+When the part is ready to be meshed it is exported from NX. There exists several formats to export a CAD model such that the details of the model are preserved, and at Andritz the standard STEP (standard for the exchange of product model data) format is used. A STEP file describes a CAD model according to an ISO standard which is used for file exchange~\cite{stepiso}.
+
+The rest of the pre-processing is carried out in the Salomé Platform described in Section~\ref{sub:salom_platform}. The STEP file is imported and the Geometry module is selected. As described in Section~\ref{ssub:geometry_module}, groups are created in the Geometry module to define where local mesh refinement is needed, where boundary conditions are applied and possible contact surfaces.
+
+After the groups are defined the the analyst change to the Mesh module where the model is meshed. The meshing process in Salomé is described in Section~\ref{ssub:mesh_module}. 3D models are usually meshed with tetrahedrons (see Sec.~\ref{ssub:elements}) and 2D models are usually meshed with triangles, in both cases the NETGEN algorithm is used.
+
+To solve the model Code Aster is used and, as is described in Section~\ref{sub:code_aster}, Code Aster requires the mesh to be described in a text file where patches, on which boundary conditions are applied, are defined. Therefore, mesh groups are defined in the Mesh module before the mesh is exported.
+
+The final steps of the analysis has not been investigated to the same level of detail, and are therefore summarised just to describe the entire workflow of the analysis. When the file describing the mesh has been created, the COMM file that describes the simulation is written. This file describes the type of simulation, boundary conditions and other parameters depending on the type of simulation. The simulation is executed with these two input files and the output is the results that can be visualised and analysed with the ParaVis module. 
+
+The workflow described is presented in Figure~\ref{fig:andritz_workflow}. 
 
 \begin{figure}[t]
 	\begin{center}
@@ -41,5 +51,30 @@ The current workflow at Andritz Hydro AB is described in Figure~\ref{fig:andritz
 	\caption{Current analysis workflow at Andritz Hydro AB.}
 	\label{fig:andritz_workflow}
 \end{figure}
+
+If the results are feasible the development of the CAD model can continue, and preparations for the manufacturing process can begin. However, if the results show that the model does not fulfil the requirements the model needs to be redesigned and the analysis repeated on the updated model. This iteration procedure is standard in product development. Since the analysis of the updated model is likely to be very similar to the original model some of the steps described in Figure~\ref{fig:andritz_workflow} are reusable, however, some steps have to be performed again. During the analysis of a redesigned model the following steps cannot be reused:
+\begin{itemize}
+	\item Model clean-up
+	\item Create geometric groups
+	\item Create mesh
+	\item Create mesh groups
+\end{itemize}
+Obviously the visualisation and analysis of the results need to be repeated, but that is unavoidable. The four steps mentioned above are all part of the pre-process of the analysis, and they could be a very time consuming part of the analysis, so it would be favourable to find a solution that could reuse the fact that these steps already have been performed on a very similar model. 
+
+It is also possible that half way through the analysis there could be an update to the original CAD model that is independent of the analysis. If the update is significant to the analysis a new analysis needs to be started in this case as well. This is because the link between the CAD model and the analysis model is broken during the first step when the CAD model is copied. This is obviously very frustrating and time consuming for the analyst. Since these updates of the CAD model are impossible to prevent a solution that diminish the effect of the update is very desirable.
 % subsection analysis_workflow_at_andritz (end)
+
+\subsection{Using NX Advanced Simulation} % (fold)
+\label{sub:using_nx_advanced_simulation}
+The previous section described the structural analysis workflow at Andritz Hydro AB and highlighting parts of the workflow that is inefficient, especially if a new iteration is started. This section describes a possible solution some of the problems that are discussed. NX Advanced Simulation (described in Sec.~\ref{sub:nx_advanced_simulation}) supports the entire analysis process 
+% subsection using_nx_advanced_simulation (end)
+
+\subsection{Salomé API Script} % (fold)
+\label{sub:salom_api_script}
+
+% subsection salom_api_script (end)
+
+
+
+
 % section analysis (end)

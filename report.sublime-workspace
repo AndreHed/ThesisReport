@@ -195,15 +195,7 @@
 			"file": "report.tex",
 			"settings":
 			{
-				"buffer_size": 821,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "introduction.tex",
-			"settings":
-			{
-				"buffer_size": 7988,
+				"buffer_size": 825,
 				"line_ending": "Unix"
 			}
 		},
@@ -211,18 +203,23 @@
 			"file": "theory.tex",
 			"settings":
 			{
-				"buffer_size": 7636,
+				"buffer_size": 14404,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "%!TEX root = report.tex\n\n\\section{Analysis} % (fold)\n\\label{sec:analysis}\nThe previous section described structural analysis and FEA in general and presented different software programs that can be used in the analysis. This section presents how FEA is performed at Andritz Hydro AB based on the investigation made by the author of this thesis.\n\n\\subsection{Analysis Workflow at Andritz} % (fold)\n\\label{sub:analysis_workflow_at_andritz}\n% Product development process: FEA p. 12-13\nThe structural analysis begins with a CAD model created by the design team. The design engineers at Andritz Hydro AB use Siemens NX to create CAD models, internally in NX these models are called \\textit{parts}. The parts are given a reference number to a database where they are stored, and this reference number is passed to the calculation team. As described in Section~\\ref{ssub:pre_processing}, the CAD model needs to be cleaned of features that are unnecessary to the analysis, since the cleaning process can change the model significantly it is not appreciated by the design engineers that the model they created is altered, therefore, a copy of this model should be created which can be prepared for analysis. \n\nThe current workflow at Andritz Hydro AB is described in Figure~\\ref{fig:andritz_workflow}. \n\n\\begin{figure}[t]\n	\\begin{center}\n		\\begin{tikzpicture}[node distance=5mm]\n			\\node[rect] (design)					{Design};\n			\\node[rect] (clean)	[below=of design] 	{Model clean-up};\n			\\node[rect] (step)	[below=of clean]	{Export part as \\texttt{.step} file};\n			\\node[rect] (salom)	[below=of step]		{Import to Salomé};\n			\\node[rect] (group) [below=of salom] 	{Create groups};\n			\\node[rect] (mesh)	[below=of group]	{Create mesh};\n			\\node[rect] (mail)	[below=of mesh]		{Export as \\texttt{.mail} file};\n			\\node[rect] (comm)	[below=of mail]		{Write Code Aster input file};\n			\\node[rect] (solve)	[below=of comm]		{Solve};\n			\\node[rect] (vis)	[below=of solve]	{Visualise and analyse results};\n			\\path (design)	edge[->]	(clean)\n				  (clean)	edge[->]	(step)\n				  (step)	edge[->]	(salom)\n				  (salom)	edge[->]	(group)\n				  (group)	edge[->]	(mesh)\n				  (mesh)	edge[->]	(mail)\n				  (mail)	edge[->]	(comm)\n				  (comm)	edge[->]	(solve)\n				  (solve)	edge[->]	(vis);\n			\\draw [->] (vis.west) -- ++(-.5,0) |- (design.west);\n		\\end{tikzpicture}\n	\\end{center}\n	\\caption{Current analysis workflow at Andritz Hydro AB.}\n	\\label{fig:andritz_workflow}\n\\end{figure}\n% subsection analysis_workflow_at_andritz (end)\n% section analysis (end)",
 			"file": "analysis.tex",
-			"file_size": 2516,
-			"file_write_time": 130713291865711846,
 			"settings":
 			{
-				"buffer_size": 2516,
+				"buffer_size": 4518,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "conclusions.tex",
+			"settings":
+			{
+				"buffer_size": 396,
 				"line_ending": "Unix"
 			}
 		},
@@ -230,7 +227,7 @@
 			"file": "thesis.bib",
 			"settings":
 			{
-				"buffer_size": 1026,
+				"buffer_size": 2665,
 				"line_ending": "Unix"
 			}
 		}
@@ -347,6 +344,9 @@
 	],
 	"file_history":
 	[
+		"/home/naland09/Exjobb/study/salome/copygroups.py",
+		"/home/naland09/Exjobb/rep/introduction.tex",
+		"/home/naland09/Exjobb/doc/log",
 		"/home/naland09/Exjobb/study/salome/testfunctions.py",
 		"/home/naland09/Exjobb/rep/test.tex",
 		"/home/naland09/Exjobb/rep/text_snippets",
@@ -354,7 +354,6 @@
 		"/home/naland09/Exjobb/rep/thesis.bib",
 		"/home/naland09/Exjobb/rep/report.tex",
 		"/home/naland09/Exjobb/rep/theory.tex",
-		"/home/naland09/Exjobb/rep/introduction.tex",
 		"/home/naland09/.config/sublime-text-3/Packages/User/LaTeXTools.sublime-settings",
 		"/home/naland09/.config/sublime-text-3/Packages/User/LaTeX.sublime-settings",
 		"/home/naland09/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
@@ -371,7 +370,6 @@
 		"/opt/sublime_text/Packages/LaTeX.sublime-package",
 		"/home/naland09/Documents/drifttagning/results/backup/freq_calc.m",
 		"/home/naland09/.config/sublime-text-3/Installed Packages/LaTeX Snippets.sublime-package",
-		"/home/naland09/Exjobb/study/salome/copygroups.py",
 		"/home/naland09/Exjobb/study/salome/misc/copygroups.py",
 		"/home/naland09/Exjobb/study/salome/test/test.py",
 		"/home/naland09/Exjobb/study/salome/dump.py",
@@ -455,6 +453,9 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"work-flow",
+			"flow",
+			"\"\"",
 			"comm",
 			"work-flow",
 			"softwares",
@@ -579,10 +580,7 @@
 			"NOTHI",
 			"KALLE",
 			"TODO",
-			"fold",
-			"GetObject",
-			"name",
-			"Name"
+			"fold"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -601,7 +599,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -610,43 +608,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 821,
+						"buffer_size": 825,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								363,
-								363
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "introduction.tex",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7988,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3216,
-								3216
+								748,
+								748
 							]
 						],
 						"settings":
@@ -661,20 +631,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 1,
 					"file": "theory.tex",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7636,
+						"buffer_size": 14404,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								70,
-								70
+								12619,
+								12619
 							]
 						],
 						"settings":
@@ -683,27 +653,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 3714.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 2,
 					"file": "analysis.tex",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2516,
+						"buffer_size": 4518,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1199,
-								1199
+								3727,
+								3727
 							]
 						],
 						"settings":
@@ -712,10 +682,38 @@
 							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 790.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "conclusions.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 396,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								342,
+								342
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -724,15 +722,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1026,
+						"buffer_size": 2665,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1026,
-								1026
+								851,
+								851
 							]
 						],
 						"settings":
@@ -791,6 +789,10 @@
 		"height": 0.0
 	},
 	"output.package_dev":
+	{
+		"height": 112.0
+	},
+	"output.unsaved_changes":
 	{
 		"height": 112.0
 	},
