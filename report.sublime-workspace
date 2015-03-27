@@ -195,7 +195,15 @@
 			"file": "report.tex",
 			"settings":
 			{
-				"buffer_size": 825,
+				"buffer_size": 947,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "introduction.tex",
+			"settings":
+			{
+				"buffer_size": 8142,
 				"line_ending": "Unix"
 			}
 		},
@@ -203,7 +211,7 @@
 			"file": "theory.tex",
 			"settings":
 			{
-				"buffer_size": 14404,
+				"buffer_size": 15443,
 				"line_ending": "Unix"
 			}
 		},
@@ -211,15 +219,7 @@
 			"file": "analysis.tex",
 			"settings":
 			{
-				"buffer_size": 4518,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "conclusions.tex",
-			"settings":
-			{
-				"buffer_size": 396,
+				"buffer_size": 11658,
 				"line_ending": "Unix"
 			}
 		},
@@ -227,7 +227,7 @@
 			"file": "thesis.bib",
 			"settings":
 			{
-				"buffer_size": 2665,
+				"buffer_size": 3125,
 				"line_ending": "Unix"
 			}
 		}
@@ -316,6 +316,8 @@
 		[
 			"sublime.log_commands(True)",
 			"sublime.log_input(True)",
+			"sublime.log_commands(True)",
+			"sublime.log_input(True)",
 			"view.substr(sublime.Region(view.find_by_selector('entity.name.section.latex')[0].b+2,view.find_by_selector('entity.name.section.latex')[1].a-9))",
 			"import sublime",
 			"view.substr(sublime.Region(view.find_by_selector('entity.name.section.latex')[0].b+2,view.find_by_selector('entity.name.section.latex')[1].a-9))",
@@ -345,6 +347,13 @@
 	"file_history":
 	[
 		"/home/naland09/Exjobb/study/salome/copygroups.py",
+		"/mnt/NALD0093/home/work/bin/aster/unv2mail.sh",
+		"/home/naland09/Exjobb/rep/conclusions.tex",
+		"/home/naland09/Exjobb/study/sim1.comm",
+		"/home/naland09/Exjobb/study/salome/Mesh_1.unv",
+		"/home/naland09/Exjobb/study/salome/Mesh_1.mail",
+		"/home/naland09/Exjobb/study/salome/HY.unv",
+		"/home/naland09/Exjobb/study/salome/HY.mail",
 		"/home/naland09/Exjobb/rep/introduction.tex",
 		"/home/naland09/Exjobb/doc/log",
 		"/home/naland09/Exjobb/study/salome/testfunctions.py",
@@ -453,6 +462,13 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"nx_advanced_simulation",
+			"\\ref",
+			"ref",
+			"consuming",
+			"Code\\_Aster",
+			"file",
+			"equipment",
 			"work-flow",
 			"flow",
 			"\"\"",
@@ -573,14 +589,7 @@
 			"Group_1",
 			"NETGEN_3D_Parameters",
 			"TODO",
-			"sourcemesh",
-			"NETGEN_3D_Parameters",
-			"FIN",
-			"BRICKA",
-			"NOTHI",
-			"KALLE",
-			"TODO",
-			"fold"
+			"sourcemesh"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -599,7 +608,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -608,15 +617,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 825,
+						"buffer_size": 947,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								748,
-								748
+								775,
+								775
 							]
 						],
 						"settings":
@@ -627,24 +636,52 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "theory.tex",
+					"file": "introduction.tex",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 14404,
+						"buffer_size": 8142,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								12619,
-								12619
+								6120,
+								6120
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1281.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "theory.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15443,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9427,
+								9427
 							]
 						],
 						"settings":
@@ -653,27 +690,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3714.0,
+						"translation.y": 2743.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 3,
 					"file": "analysis.tex",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4518,
+						"buffer_size": 11658,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3727,
-								3727
+								9401,
+								9401
 							]
 						],
 						"settings":
@@ -682,38 +719,10 @@
 							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 790.0,
+						"translation.y": 3234.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "conclusions.tex",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 396,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								342,
-								342
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -722,15 +731,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2665,
+						"buffer_size": 3125,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								851,
-								851
+								1392,
+								1392
 							]
 						],
 						"settings":
@@ -740,7 +749,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 153.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
@@ -751,7 +760,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 34.0
+		"height": 26.0
 	},
 	"input":
 	{
@@ -799,7 +808,7 @@
 	"project": "report.sublime-project",
 	"replace":
 	{
-		"height": 46.0
+		"height": 48.0
 	},
 	"save_all_on_build": true,
 	"select_file":

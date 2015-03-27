@@ -1,11 +1,11 @@
 %!TEX root = report.tex
 
-\section{Theory} % (fold)
-\label{sec:theory}
+\chapter{Theory} % (fold)
+\label{cha:theory}
 This section gives a basic introduction to the Finite Element Method (FEM) for structural mechanics, and describes the different stages of finite element analysis (FEA). It also presents the software programs that are used in the current analysis workflow at Andritz Hydro AB.
 
-\subsection{Finite Element Method for Structural Mechanics} % (fold)
-\label{sub:finite_element_method_in_structural_mechanics}
+\section{Finite Element Method for Structural Mechanics} % (fold)
+\label{sec:finite_element_method_in_structural_mechanics}
 Here follows a short but descriptive text about FEM.
 When, where and why did it originate?
 Elements
@@ -18,9 +18,8 @@ The finite element method is as numerical approach that can be used to approxima
 
 (Maybe add section with mathematical FEM description. degrees of freedom)
 
-
-\subsubsection{Pre-Processing} % (fold)
-\label{ssub:pre_processing}
+\subsection{Pre-Processing} % (fold)
+\label{sub:pre_processing}
 When a structure has been designed, the CAD model needs to be analysed to determine if the desired performance qualifications are reached. The first step of the analysis is the pre-processing, which is the step that prepares the model for a computation.
 
 % Clean: FEA book p. 181-191
@@ -36,42 +35,42 @@ Before the FE model can be solved the material properties of the model needs to 
 It is probably obvious that this part of the analysis can be very time consuming, and to obtain a solution it is of paramount importance that the FE model is created correctly, with sufficient details of the original model and that boundary conditions are properly defined.
 % subsubsection pre_processing (end)
 
-\subsubsection{Solution} % (fold)
-\label{ssub:solution}
+\subsection{Solution} % (fold)
+\label{sub:solution}
 When the FE model is created, the next step is to solve the model to obtain the results. This step is mainly executed by the computer, the only effort from the user is setting the correct solver parameters. Which parameters that can be specified is highly dependent on which solver is used. The execution time depends on how large the FE model is (number degrees of freedom) and what solution type is used (non-linear solutions are more demanding).
 
 When the solver is finished it is important to evaluate the results and the solver output to establish if the solution is reasonable and if the results are accurate. To determine if the mesh is sufficiently refined the convergence could be checked, and to check that the boundary conditions are properly defined the resultant forces on the model could be compared with the specified loads.~\cite[p.~303-324]{adams99}
 % subsubsection solution (end)
 
-\subsubsection{Post-Processing} % (fold)
-\label{ssub:post_processing}
+\subsection{Post-Processing} % (fold)
+\label{sub:post_processing}
 The first step of the post-processing is to visualise the results (displacement, stress, etc.) to determine if the solution is reasonable. If the solution is reasonable the FE model can be considered to be adequate. The next step is to visualise the specific results that are the goal of the analysis. Even if this step is not very technical, it is important to analyse the results to determine if the results can be trusted.
 % subsubsection post_processing (end)
 
-\subsubsection{Elements} % (fold)
-\label{ssub:elements}
+\subsection{Elements} % (fold)
+\label{sub:elements}
 Describe different types of elements.
 % subsubsection elements (end)
 
-\subsubsection{Boundary Condidtions} % (fold)
-\label{ssub:boundary_condidtions}
+\subsection{Boundary Condidtions} % (fold)
+\label{sub:boundary_condidtions}
 Describe different types of bc's.
 % subsubsection boundary_condidtions (end)
 
-\subsubsection{Load Cases} % (fold)
-\label{ssub:load_cases}
+\subsection{Load Cases} % (fold)
+\label{sub:load_cases}
 Maybe not necessary
 % subsubsection load_cases (end)
 
-\subsubsection{Contacts} % (fold)
-\label{ssub:contacts}
+\subsection{Contacts} % (fold)
+\label{sub:contacts}
 Describe non-linearity, meshing technique etc.
 % subsubsection contacts (end)
 
 % subsection finite_element_method_in_structural_mechanics (end)
 
-\subsection{Siemens NX} % (fold)
-\label{sub:siemens_nx}
+\section{Siemens NX} % (fold)
+\label{sec:siemens_nx}
 Write some general about NX and which features that are used. Also write about Advanced Simulation.
 
 NX\texttrademark{} is a software developed by Siemens PLM Software that supports every aspect of product development (i.e. design, analysis and manufacturing)~\cite{siemensnx}. This section describes a subset of the functionality provided by NX that is relevant for this thesis, and the focus is on the tools to clean the model (called Synchronous Modelling  tools) and the analysis solution (called Advanced Simulation).~\cite[p.~36ff.]{goncharov14}
@@ -81,12 +80,12 @@ The synchronous modelling tools that are provided by NX are very efficient and p
 NX Advanced Simulation provides the entire CAE workflow with pre- and post-processing and solver environment. It is also tightly integrated with the CAD application of NX, enabling a fast and efficient analysis process. The meshing capabilities that Advanced Simulation provides are the usual 3D and 2D automeshers as well as more exotic elements for specific applications. The simulation environment can be integrated with several of the most common solvers such as NX Nastran, Abaqus and Ansys.
 % subsection siemens_nx (end)
 
-\subsection{Salomé Platform} % (fold)
-\label{sub:salom_platform}
-Salomé is a free software platform (distributed under GNU LGPL~\cite{lgpl}) for numerical simulation. Salomé strives to provide a framework where the entire workflow of a numerical simulation (described in sec.~\ref{ssub:pre_processing}-\ref{ssub:post_processing}) can take place. The platform consists of different modules that can be used for pre- and post-processing, which are presented under the same GUI (graphical user interface).~\cite{ribes07} 
+\section{Salomé Platform} % (fold)
+\label{sec:salom_platform}
+Salomé is a free software platform (distributed under GNU LGPL~\cite{lgpl}) for numerical simulation. Salomé strives to provide a framework where the entire workflow of a numerical simulation (described in sec.~\ref{sub:pre_processing}-\ref{sub:post_processing}) can take place. The platform consists of different modules that can be used for pre- and post-processing, which are presented under the same GUI (graphical user interface).~\cite{ribes07} 
 
-\subsubsection{Geometry Module} % (fold)
-\label{ssub:geometry_module}
+\subsection{Geometry Module} % (fold)
+\label{sub:geometry_module}
 The \textit{Geometry} module provides basic functionality to import CAD models and prepare them for numerical simulation. Common tasks that are carried out in this module is:
 \begin{itemize}
  	\item create groups
@@ -101,8 +100,8 @@ To be able to control the automeshing it is useful to define patches on the mode
 The partition function connects solid objects and creates a single solid, but the contact face will still remain between the objects. This function is mainly used when a conformal mesh has to be created for a contact simulation.~\cite{salomedoc}
 % subsubsection geometry_module (end)
 
-\subsubsection{Mesh Module} % (fold)
-\label{ssub:mesh_module}
+\subsection{Mesh Module} % (fold)
+\label{sub:mesh_module}
 When a model has been imported to Geometry and and the groups are defined, the \textit{Mesh} module can mesh the model. Mesh provides the most common elements and several different algorithms for mesh generation are available, resulting in a very extensive library of functions.
 
 To mesh an object with the Mesh module first an object from Geometry is selected, then an algorithm is selected and finally an hypothesis is created. The hypothesis represent the parameters that the algorithm use to create the mesh, depending on the algorithm different parameter values are specified in the hypothesis. Since there exist several algorithms in Mesh, this section only describes the \textit{NETGEN} algorithm and the \textit{Projection} algorithm.
@@ -119,15 +118,20 @@ The NETGEN algorithm~\cite{netgen} is an automesher that can be used for creatin
 The projection algorithm creates a mesh of an object by projecting the mesh of another object. This algorithm is especially used when conformal meshes are desirable.
 
 The mesh module supports, just as the Geometry module, the creation of groups. This feature is specifically useful when a specific part of the mesh needs to be referenced or exported.
+
+\subsubsection{Contact Mesh} % (fold)
+\label{ssub:contact_mesh}
+If the analysis contains contacts, it is in some cases necessary to have matching meshes at the contact surface. A matching mesh means that the mesh of the two objects in contact have nodes at the same place at the contact surface.
+% subsubsection contact_mesh (end)
 % subsubsection mesh_module (end)
 
-\subsubsection{ParaVis Module} % (fold)
-\label{ssub:paravis_module}
+\subsection{ParaVis Module} % (fold)
+\label{sub:paravis_module}
 The ParaVis module is based on ParaView an open source platform for data analysis and visualisation. Suffice to say that all the functionality needed to visualise the results in a structural analysis is provided.
 % subsubsection paravis_module (end)
 
-\subsubsection{Application Programming Interface (API)} % (fold)
-\label{ssub:application_programming_interface_}
+\subsection{Application Programming Interface (API)} % (fold)
+\label{sub:application_programming_interface_}
 A very advantageous feature of Salomé and the modules that have been described is that the functionality provided by the GUI also is available through an API, enabling the user to write scripts that execute functions automatically.
 
 An API is a framework of functions for building software applications. Using the API a developer can efficiently create software that perform specific tasks by using the functionality provided by the API. The documentation of the API describes which functions that are available and what each functions does.
@@ -148,9 +152,9 @@ Salomé's API is based on the Python programming language and the Salomé GUI in
 
 % subsection salom_platform (end)
 
-\subsection{Code\_Aster} % (fold)
-\label{sub:code_aster}
-Code\_Aster~\cite{codeaster} is an open source FEM software for structural analysis which is developed by EDF (Électricité de France) and distributed under GPL (General Public License)~\cite{gpl}. The software is driven by an input file with commands that that describe the simulation (a COMM file), and a text file describing the mesh (usually a MAIL file). The information the MAIL file needs to contain is the mesh data, that is the nodes and the elements of the mesh, but the file also needs to describe the patches on which the boundary conditions are applied, these patches can be created in the Mesh module as described in Section~\ref{ssub:mesh_module}. The output is text files describing general information about the simulation (errors, warnings, convergence, etc.) and a file containing the results which can be imported to Salomé and visualised with the ParaVis module. 
+\section{Code\_Aster} % (fold)
+\label{sec:code_aster}
+Code\_Aster~\cite{codeaster} is an open source FEM software for structural analysis which is developed by EDF (Électricité de France) and distributed under GPL (General Public License)~\cite{gpl}. The software is driven by an input file with commands that that describe the simulation (a COMM file), and a text file describing the mesh (usually a MAIL file). The information the MAIL file needs to contain is the mesh data, that is the nodes and the elements of the mesh, but the file also needs to describe the patches on which the boundary conditions are applied, these patches can be created in the Mesh module as described in Section~\ref{sub:mesh_module}. The output is text files describing general information about the simulation (errors, warnings, convergence, etc.) and a file containing the results which can be imported to Salomé and visualised with the ParaVis module. 
 % subsection code_aster (end)
 
 % section theory (end)

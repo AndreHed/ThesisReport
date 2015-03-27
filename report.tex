@@ -1,4 +1,4 @@
-\documentclass[10pt,a4paper]{article}
+\documentclass[10pt,a4paper]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}		% Allow underscore in text
 \usepackage[english]{babel}
@@ -9,11 +9,17 @@
 \usepackage[backend=biber,firstinits=true,sorting=none]{biblatex}
 \usepackage{csquotes}
 \usepackage{siunitx}
+\usepackage{subcaption}
+\usepackage{listings}
 \usepackage{tikz}
+\usepackage{color}
 \usetikzlibrary{positioning}
+\graphicspath{ {figures/} }
+
+% \pdfimageresolution=96
 
 \author{André Hedlund}
-\title{Thesis}
+\title{Effective Finite Element Analysis Workflow for Structural Mechanics}
 
 \bibliography{thesis.bib}
 
@@ -29,12 +35,40 @@
 	}
 }
 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{codeorange}{rgb}{0.95,0.45,0}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codeorange},
+    % basicstyle=\footnotesize,
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\lstset{style=mystyle}
+
 
 \begin{document}
 \maketitle
 %\begin{abstract}
 %\end{abstract}
-%\tableofcontents
+\tableofcontents
 
 \input{introduction}
 
@@ -46,7 +80,7 @@
 
 \input{conclusions}
 
-% \input{nxguide}
+\input{appendix}
 
 
 \printbibliography
