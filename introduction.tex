@@ -2,28 +2,33 @@
 
 \chapter{Introduction}
 \label{cha:introdution}
-
 % \subsection{Hydro-Electric Power}
 Hydro-power is the worlds largest renewable energy source, and hydroelectric power plants have been developed and used since the nineteenth century. During the last decade hydro-power amount to 45 percent of the total electricity production in Sweden~\cite{scb}. Many of the hydro-power plants in Sweden were built several decades ago, and they are therefore in need of refurbishment and modernisation. A simplified description of a conventional hydro power plant is that it consist of a dam, turbine and a generator, where the dam creates a water reservoir that contains potential energy that drives the turbine which in turn generates electricity.
 
 % \subsection{Andritz Hydro}
-The ANDRITZ GROUP provides services mainly for the hydro-power, pulp and paper, and metals industries, with headquarters in Graz, Austria and approximately \num{24500} employees worldwide. ANDRITZ HYDRO is a supplier of electromechanical equipment for hydro-power plants, and the Swedish subsidiary ANDRITZ HYDRO AB has 160 employees and focuses mainly on refurbishment and optimisation of turbines and generators.
+The Andritz Group provides services mainly for the hydro-power, pulp and paper, and metals industries, with headquarters in Graz, Austria and approximately \num{24500} employees worldwide. Andritz Hydro is a supplier of electromechanical equipment for hydro-power plants, and the Swedish subsidiary Andritz Hydro AB (henceforth referred to as Andritz) has 160 employees and focuses mainly on refurbishment and optimisation of turbines and generators.
 
 % Write about the 'product realization process'
-Turbines and generators are advanced electromechanical equipment, and since hydroelectric power plants need to reliably operate under long terms, the modernisation process is subject to rigorous analysis to ensure long term operation. At ANDRITZ HYDRO AB the entire realisation process with design, analysis and manufacturing is performed. 
-%TODO: Expand this section by explaining in more detail PLM and structural analysis.
-The design process is done with CAD (Computer Aided Design) and most of the analysis with CAE (Computer Aided Engineering). Siemens NX software is a design, engineering and manufacturing solution, and at Andritz Hydro AB it is mainly used for CAD. For the analysis the Salome platform is used with Code Aster as solver.
+At Andritz the entire product development process is performed, including product design, analysis and manufacturing. The design process, usually referred to as CAD (Computer Aided Design), and the analysis process, usually referred to as CAE (Computer Aided Engineering), are the parts of the product development that is the focus of this thesis.
 
-%TODO: Write more about machined parts and that the focus of this thesis I on the analysis of new parts.
+Turbines and generators are advanced electromechanical equipment, and since hydroelectric power plants need to reliably operate under long terms, the modernisation process is subject to rigorous analysis to ensure long term operation. Therefore, it is important to analyse the structure's capability to support the applied loads; \textit{structural mechanics} focuses on the computation of deformations and stresses, to evaluate the performance of the structure. The physical phenomena that are investigated (stress, strain, elasticity etc.) are modelled by differential equations together with a set of boundary conditions. Generally, there exist no analytical solutions to differential equations that relate to complex structures, therefore, the only way to solve the equations are with numerical methods.
+
+The finite element method (FEM) is a numerical approach that can be used to approximate the solution of boundary value problems. The method has been used rigorously in different engineering disciplines for several decades, and its main advantage over other numerical methods for solving differential equations is its capability to handle complex geometries. The structure is divided into smaller parts, called elements, which together create a discrete mesh that represent the geometry.~\cite{ottossen92}
 
 % Write about why the workflow is problematic at Andritz
-In general, a significant amount of time is spent on preparing model for the simulation -- usually more than the actual solver run -- it is therefore important to make the pre-processing as effective as possible.
+There exist several different software programs for CAD and CAE, at Andritz \textit{Siemens NX} is used for CAD and \textit{Salomé} together with \textit{Code Aster} are used for the finite element analysis (FEA). The analysis process is comprised of three steps: pre-processing, solution and post-processing. The goal of the pre-processing is from a CAD model develop an FE model containing a mesh, material definitions and boundary conditions. In general, a significant amount of time is spent on the pre-processing and a lot of manual work can be required by the analyst, it is therefore important to make the pre-processing as effective as possible.
 
-At Andritz Hydro AB the workflow of the modernization process is in some aspects cumbersome and convoluted, and a more streamlined workflow is desired. Some of the difficulties occur solely because of that two different software programs are used for CAD and CAE, and other difficulties are generically inherited from the software programs that are used.
+At Andritz the analysis workflow is in some aspects cumbersome and convoluted, and a more streamlined workflow is desired. Some of the difficulties occur solely because of that two different software programs are used for CAD and CAE, and other difficulties are generically inherited from the software programs that are used.
 
-The main purpose of this thesis is to evaluate the current workflow at Andritz Hydro AB, and suggest changes to the workflow that will improve the analysis. The first evaluation of the workflow is concerned with larger strategical improvements, such as integrating the design and analysis process to the same software. The second evaluation is concerned with smaller improvements that try to simplify cumbersome processes within a specific software.
+The purpose of this thesis is to evaluate the current workflow at Andritz, based on time-efficiency and convenience. Based on what the evaluation manifest, suggestions to improve the workflow will be presented. The suggestions are concerned with both larger strategical improvements, such as evaluating other software programs, and smaller improvements that simplify time-consuming repetitive processes. The main aspects to consider are:
+\begin{itemize}
+	\item time-efficiency,
+	\item simple and convenient processes,
+	\item cost-efficiency and
+	\item easy and fast to learn.
+\end{itemize}
 
-Since the product realisation process is complex, it is not certain that there exist feasible solutions that improves the workflow. It is also not guaranteed that the software programs provides functionality such that processes can be simplified.
+Since the product development process is complex, it is not certain that there exist feasible solutions that improves the workflow. It is also not guaranteed that the software programs provides functionality such that processes can be simplified.
 
 
 %\subsection{Finite Element Analysis}
@@ -42,7 +47,7 @@ Since the product realisation process is complex, it is not certain that there e
 %	\centering
 %	\rule{2cm}{2cm}
 %	\label{fig:workflow}
-%	\caption{A schematic figure of the workflow at ANDRITZ HYDRO AB for finite element analyses.}
+%	\caption{A schematic figure of the workflow at Andritz for finite element analyses.}
 %\end{figure}
 %
 %\subsection{Goal}
@@ -51,7 +56,7 @@ Since the product realisation process is complex, it is not certain that there e
 %	\item NX provides a utility called \emph{Advanced Simulation} that includes the functionality to both create groups and mesh from NX. If \emph{Advanced Simulation} fulfils the requirements of the current process, it would be possible to eliminate several steps from the workflow that is described in section~\ref{sec:feaandritz} and Figure~\ref{fig:workflow}.
 %	\item \emph{Advanced Simulation} also includes the functionality to use some of the eminent solvers Nastran, Abaqus and Ansys. Therefore it is of interest to investigate how this functionality works in NX.
 %\end{itemize}
-%Eventhough the focus of the investigation is to evaluate the technical functionalities of NX and \emph{Advanced Simulation}, it is important to establish that the current NX license that is used at ANDRITZ HYDRO AB does not include the \emph{Advanced Simulation} utility. Therefore, the investigated paths described above would result in an increase of the costs, since the current softwares (Salome-Meca and Code Aster) are open source and free of charge.
+%Eventhough the focus of the investigation is to evaluate the technical functionalities of NX and \emph{Advanced Simulation}, it is important to establish that the current NX license that is used at Andritz does not include the \emph{Advanced Simulation} utility. Therefore, the investigated paths described above would result in an increase of the costs, since the current softwares (Salome-Meca and Code Aster) are open source and free of charge.
 %
 %The investigation will also take another perspective, which is to try and improve the current workflow, without changing any of the main steps. The current workflow contains several exports and imports between different softwares and a general analysis could include several iterations between the calculation team and the design team. During these iterations, small, but significant changes are made on the part that is under analysis. Due to the convoluted workflow it is difficult to reuse the settings and work done on the previous part, therefore the process has to be repeated even if just a small change has been done to the part. This is particularly evident in the preprocessing step in Salome-Meca, where the defined groups and mesh settings are lost between these iterations. 
 %

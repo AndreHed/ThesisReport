@@ -195,7 +195,7 @@
 			"file": "report.tex",
 			"settings":
 			{
-				"buffer_size": 947,
+				"buffer_size": 2254,
 				"line_ending": "Unix"
 			}
 		},
@@ -203,7 +203,7 @@
 			"file": "introduction.tex",
 			"settings":
 			{
-				"buffer_size": 8142,
+				"buffer_size": 9522,
 				"line_ending": "Unix"
 			}
 		},
@@ -211,7 +211,7 @@
 			"file": "theory.tex",
 			"settings":
 			{
-				"buffer_size": 15443,
+				"buffer_size": 32895,
 				"line_ending": "Unix"
 			}
 		},
@@ -219,15 +219,23 @@
 			"file": "analysis.tex",
 			"settings":
 			{
-				"buffer_size": 11658,
+				"buffer_size": 15162,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "thesis.bib",
+			"file": "conclusions.tex",
 			"settings":
 			{
-				"buffer_size": 3125,
+				"buffer_size": 393,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "appendix.tex",
+			"settings":
+			{
+				"buffer_size": 1085,
 				"line_ending": "Unix"
 			}
 		}
@@ -318,6 +326,8 @@
 			"sublime.log_input(True)",
 			"sublime.log_commands(True)",
 			"sublime.log_input(True)",
+			"sublime.log_commands(True)",
+			"sublime.log_input(True)",
 			"view.substr(sublime.Region(view.find_by_selector('entity.name.section.latex')[0].b+2,view.find_by_selector('entity.name.section.latex')[1].a-9))",
 			"import sublime",
 			"view.substr(sublime.Region(view.find_by_selector('entity.name.section.latex')[0].b+2,view.find_by_selector('entity.name.section.latex')[1].a-9))",
@@ -342,11 +352,41 @@
 	},
 	"expanded_folders":
 	[
-		"/home/naland09/Exjobb/rep"
+		"/home/naland09/Exjobb/rep",
+		"/home/naland09/Exjobb/rep/salomeguide"
 	],
 	"file_history":
 	[
+		"/home/naland09/Downloads/channelflow.tikz.tex",
+		"/home/naland09/Downloads/highre.tex",
+		"/home/naland09/Downloads/walllayers.tex",
 		"/home/naland09/Exjobb/study/salome/copygroups.py",
+		"/home/naland09/Downloads/report.tex",
+		"/run/user/1001/gvfs/smb-share:server=nalsms026,share=organisation/Teknik/Erfarenhetsbank Teknik Hydro/Calculations/sluss/anhe/900168954_A.stp",
+		"/run/user/1001/gvfs/smb-share:server=nalsms026,share=organisation/Teknik/Erfarenhetsbank Teknik Hydro/Calculations/sluss/anhe/900168955_A.stp",
+		"/run/user/1001/gvfs/smb-share:server=nalsms026,share=organisation/Teknik/Erfarenhetsbank Teknik Hydro/Calculations/sluss/anhe/900168955_A_edge_Ex.stp",
+		"/run/user/1001/gvfs/smb-share:server=nalsms026,share=organisation/Teknik/Erfarenhetsbank Teknik Hydro/Calculations/sluss/mihe/900168685_A_ex_saknas_edgar.stp",
+		"/home/naland09/.config/sublime-text-3/Packages/Default/Default (Linux).sublime-keymap",
+		"/home/naland09/Exjobb/rep/salomeguide/nxguide.tex",
+		"/home/naland09/Exjobb/rep/salomeguide/guide_export.tex",
+		"/home/naland09/Exjobb/rep/salomeguide/guide_export.synctex",
+		"/home/naland09/test/index.rst",
+		"/home/naland09/test/_build/latex/test_doc.tex",
+		"/home/naland09/tmp/test/index.rst",
+		"/home/naland09/tmp/tutorial/sphinxext/apigen.py",
+		"/home/naland09/tmp/tutorial/pyplots/ellipses.py",
+		"/home/naland09/test2/copygroups.rst",
+		"/home/naland09/test2/modules.rst",
+		"/home/naland09/Exjobb/rep/codesnippets/getnxgroups.py",
+		"/home/naland09/Exjobb/rep/codesnippets/createsubmesh.py",
+		"/home/naland09/Exjobb/rep/codesnippets/creategroups.py",
+		"/home/naland09/Exjobb/rep/codesnippets/partitionshapes.py",
+		"/home/naland09/Exjobb/rep/codesnippets/createmesh.py",
+		"/home/naland09/Exjobb/rep/codesnippets/createalgorithm.py",
+		"/home/naland09/.config/sublime-text-3/Packages/LaTeXTools/LaTeXTools.default-settings",
+		"/home/naland09/Exjobb/rep/thesis.bib",
+		"/home/naland09/Exjobb/rep/introduction.tex",
+		"/home/naland09/Exjobb/rep/figures/workflow.tex",
 		"/mnt/NALD0093/home/work/bin/aster/unv2mail.sh",
 		"/home/naland09/Exjobb/rep/conclusions.tex",
 		"/home/naland09/Exjobb/study/sim1.comm",
@@ -354,19 +394,16 @@
 		"/home/naland09/Exjobb/study/salome/Mesh_1.mail",
 		"/home/naland09/Exjobb/study/salome/HY.unv",
 		"/home/naland09/Exjobb/study/salome/HY.mail",
-		"/home/naland09/Exjobb/rep/introduction.tex",
 		"/home/naland09/Exjobb/doc/log",
 		"/home/naland09/Exjobb/study/salome/testfunctions.py",
 		"/home/naland09/Exjobb/rep/test.tex",
 		"/home/naland09/Exjobb/rep/text_snippets",
 		"/home/naland09/Exjobb/rep/TODO",
-		"/home/naland09/Exjobb/rep/thesis.bib",
 		"/home/naland09/Exjobb/rep/report.tex",
 		"/home/naland09/Exjobb/rep/theory.tex",
 		"/home/naland09/.config/sublime-text-3/Packages/User/LaTeXTools.sublime-settings",
 		"/home/naland09/.config/sublime-text-3/Packages/User/LaTeX.sublime-settings",
 		"/home/naland09/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
-		"/home/naland09/Exjobb/rep/figures/workflow.tex",
 		"/home/naland09/.config/sublime-text-3/Packages/LaTeXTools/figure.sublime-snippet",
 		"/home/naland09/.config/sublime-text-3/Packages/LaTeXTools/README.markdown",
 		"/home/naland09/.config/sublime-text-3/Installed Packages/TikZ.sublime-package",
@@ -389,7 +426,6 @@
 		"/home/naland09/Exjobb/study/salome/new.py",
 		"/home/naland09/Exjobb/study/salome/test.py",
 		"/home/naland09/Exjobb/study/salome/contact/900163886_A.stp",
-		"/home/naland09/.config/sublime-text-3/Packages/Default/Default (Linux).sublime-keymap",
 		"/home/work/bin/salome/salome.sh",
 		"/usr/share/doc/texlive-doc/latex/url/url.tex",
 		"/usr/share/doc/texlive-doc/latex/url/miscdoc.sty",
@@ -448,7 +484,7 @@
 	],
 	"find":
 	{
-		"height": 35.0
+		"height": 32.0
 	},
 	"find_in_files":
 	{
@@ -462,6 +498,45 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"rounded corners,thick",
+			"prism_element",
+			"4",
+			"1",
+			"axis cs:",
+			"line width=1,",
+			"i",
+			"k",
+			"shape",
+			"loglogaxis",
+			"\\bm",
+			"bm",
+			"\\bm",
+			"the",
+			"mathbf",
+			"cases",
+			"\\frac",
+			"split",
+			"{x",
+			"sigma{",
+			"ff",
+			"sec:siemens_nx",
+			"sec",
+			"theory",
+			"BRB",
+			"Andritz Hydro AB",
+			"ANDRITZ HYDRO",
+			"Aster",
+			"aster",
+			"solve",
+			"comm",
+			"mail",
+			"mesh",
+			"group",
+			"ssub",
+			"subsub",
+			"PartitionShape",
+			"textttt",
+			"figure",
 			"nx_advanced_simulation",
 			"\\ref",
 			"ref",
@@ -550,46 +625,7 @@
 			"CheckObjectExistence",
 			"CheckObjectExistnce",
 			"DeleteGroups",
-			"CompareNormals",
-			"CopyGroupsFromTemplate",
-			"CreateList",
-			"GroupObject",
-			"print",
-			"parent me",
-			"shape",
-			"exsists",
-			"GetObject",
-			"checkobjectExistence",
-			"SMESH.FACE",
-			"smesh",
-			"SMESH",
-			"AddCodeAsterGroups",
-			"SourceFace",
-			"sourceFace",
-			"SourceFace",
-			"Projection_1D2D",
-			"CreateAlgorithm",
-			"gett",
-			"TODO",
-			"contact",
-			"groupName",
-			"group",
-			"NETGEN_2D3D",
-			"failed",
-			"print",
-			"createcontactstr",
-			"print",
-			"parent2Mesh",
-			"fold",
-			"Group_1",
-			"Box_1",
-			"Group_1",
-			"Box_1",
-			"UnionIDs",
-			"Group_1",
-			"NETGEN_3D_Parameters",
-			"TODO",
-			"sourcemesh"
+			"CompareNormals"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -608,7 +644,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -617,15 +653,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 947,
+						"buffer_size": 2254,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								775,
-								775
+								625,
+								625
 							]
 						],
 						"settings":
@@ -645,15 +681,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8142,
+						"buffer_size": 9522,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6120,
-								6120
+								4146,
+								4146
 							]
 						],
 						"settings":
@@ -661,7 +697,7 @@
 							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1281.0,
+						"translation.y": 384.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
@@ -673,15 +709,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 15443,
+						"buffer_size": 32895,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9427,
-								9427
+								30911,
+								30911
 							]
 						],
 						"settings":
@@ -690,10 +726,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2743.0,
+						"translation.y": 10012.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -702,15 +738,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11658,
+						"buffer_size": 15162,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9401,
-								9401
+								6889,
+								6889
 							]
 						],
 						"settings":
@@ -719,37 +755,64 @@
 							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 3234.0,
+						"translation.y": 720.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "thesis.bib",
+					"file": "conclusions.tex",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3125,
+						"buffer_size": 393,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1392,
-								1392
+								393,
+								393
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/LaTeX/Bibtex.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 153.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "appendix.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1085,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1085,
+								1085
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
@@ -760,7 +823,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 26.0
+		"height": 32.0
 	},
 	"input":
 	{
@@ -791,7 +854,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 112.0
+		"height": 202.0
 	},
 	"output.find_results":
 	{

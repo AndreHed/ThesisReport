@@ -12,17 +12,16 @@
 \usepackage{subcaption}
 \usepackage{listings}
 \usepackage{tikz}
+\usepackage{tikzscale}
+\usepackage{pgfplots}
 \usepackage{color}
-\usetikzlibrary{positioning}
+\usepackage{titlesec}
+\usepackage{blindtext}
+\usepackage{bm}
+
 \graphicspath{ {figures/} }
 
-% \pdfimageresolution=96
-
-\author{André Hedlund}
-\title{Effective Finite Element Analysis Workflow for Structural Mechanics}
-
-\bibliography{thesis.bib}
-
+\usetikzlibrary{positioning}
 \tikzset{
 	rect/.style={
 	rectangle,
@@ -35,12 +34,13 @@
 	}
 }
 
+\pgfplotsset{compat=1.9}
+
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 \definecolor{codeorange}{rgb}{0.95,0.45,0}
- 
 \lstdefinestyle{mystyle}{
     backgroundcolor=\color{backcolour},   
     commentstyle=\color{codegreen},
@@ -60,9 +60,23 @@
     showtabs=false,                  
     tabsize=2
 }
- 
 \lstset{style=mystyle}
 
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat
+	{\chapter}			% command
+	[hang]				% shape
+	{\Huge\bfseries}	% format
+	{\thechapter\hsp\textcolor{gray75}{|}\hsp} % label
+	{5pt}				% sep
+	{\Huge\bfseries}	% before code
+
+
+\author{André Hedlund}
+\title{Effective Finite Element Analysis Workflow for Structural Mechanics}
+
+\bibliography{thesis.bib}
 
 \begin{document}
 \maketitle
