@@ -2,16 +2,33 @@
 
 \chapter{Conclusions} % (fold)
 \label{sec:conclusions}
+This chapter discuss the different solutions presented in Chapter~\ref{cha:analysis}, and recommends the -- according to the author -- preferred workflow for FEA at Andritz. The two different approaches (NX Advanced Simulation and Salomé API Script) are first discussed separately and in the last section the final recommendation is presented.
 
 \section{NX Advanced Simulation} % (fold)
-\label{sub:nx_advanced_simulation}
-Present Advanced Simulation.
-% subsection nx_advanced_simulation (end)
+\label{sec:nx_advanced_simulation}
+With NX Advanced Simulation the entire FEA workflow can be performed within the same software, therefore eliminating the time spent on transferring files between different software programs. The environment that Advanced Simulation provides with the idealised part and the associativity to the original CAD model is very efficient for the design-analysis iterations. Advanced Simulation can therefore be expected to increase efficiency for the calculation engineers at Andritz.
 
-% \subsection{Salomé API Script} % (fold)
-% \label{sub:salom_api_script}
-% Present the script.
-% % subsection salom_api_script (end)
+There is currently only one Advanced Simulation license at Andritz (MasterFEM). There are at least three calculation engineers that need a license, therefore, additional licenses need to be purchased if Advanced Simulation should be used as CAE software. Since the solver is used in the background, whereas the pre- and post-processing features are used in the foreground by the user, it is possible to manage the workflow with a separate pre- and post-processing license for each calculation engineer and a shared solver license between the calculation engineers. Therefore it would suffice if the calculation team purchased three NX Advanced FEM licenses and kept the current NX Nastran solver, but since it might be too limited to only have one solver another possibility is to purchase one NX Advanced FEM and two NX Advanced Simulation licenses. These two different configurations represent a price range of \num{305760} -- \num{377720} SEK; this cost is an important aspect to consider with this particular workflow.
+
+Since the calculation engineers at Andritz have been working with the Salomé Platform and Code Aster in their FEA, it is also expected that the introduction of a new solver and GUI (Graphical User Interface) will demand a learning curve that can be costly depending on the usability of Advanced Simulation. Even though the GUI is relatively easy to use and a comprehensible documentation exists, the time that is lost on learning the new software can be significant and it might even be necessary with training courses for the employees (that comes at an additional cost).
+
+% section nx_advanced_simulation (end)
+
+\section{Salomé API Script} % (fold)
+\label{sec:salom_api_script_conclusions}
+The current workflow (see Sec.~\ref{sec:analysis_workflow_at_andritz}) uses NX for cleaning, Salomé for meshing and defining where boundary conditions, etc. are applied, Code Aster for solving, and Salomé to visualise the results. To make this workflow more efficient a script, that utilises the API that Salomé provides, has been developed (see Sec.~\ref{sec:salom_api_script}). This script enables the user to automate some of the procedures that were previously performed manually.
+
+The main change in the workflow with the script is that the groups are defined in NX instead of in Salomé. The most important aspects of this workflow is that the script is stable (ie. it works seamlessly regardless of the type of analysis). If the script would fail, and the groups that were defined in NX has to be redefined in Salomé, the script would only cause annoyance. During the testing of the script problems concerning the definition of groups have been encountered (though they have been sparse), for example have the groups been translated to a format in the STEP file that the script cannot identify, therefore the groups must be redefined again.
+% section salom_api_script (end)
+
+\section{Summary} % (fold)
+\label{sec:summary}
+The fact that the workflow that is proposed with NX Advanced simulation is related with an increase in cost and a learning period for the users is a very big disadvantage. Advanced Simulation might solve the problems that exist in the current workflow, but since it is related to a significant cost increase it is not a feasible solution.
+
+The workflow that is related with the script is very similar to the current workflow, therefore no significant learning time is expected. The advantage is that some repetitive processes are automatically performed with the script and the amount of work that has to be repeated in a new design-analysis iteration might be significantly reduced.
+
+On these grounds the recommendation is to continue with the workflow described in Section~\ref{sub:workflow_with_salom_script} that uses the script that has been developed.
+% section summary (end)
 
 
 

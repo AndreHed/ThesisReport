@@ -68,20 +68,45 @@ Obviously the visualisation and analysis of the results need to be repeated, but
 \label{sec:using_nx_advanced_simulation}
 The previous section described the structural analysis workflow at Andritz and parts of the workflow that are inefficient where highlighted (especially if a new iteration is started). This section describes a possible solution to some of the problems that are discussed. NX Advanced Simulation (described in Sec.~\ref{sub:siemens_nx}) supports the entire FEA process, and since the CAD model is created in NX it can seem like a good fit to analyse the model in the same software.
 
+\subsection{NX Licenses} % (fold)
+\label{sub:nx_licenses}
+Currently Andritz has one license for the Advanced Simulation application, this license is called \textit{MasterFEM (A026)} and includes pre- and post-processing capabilities and the NX Nastran Basic solver. MasterFEM is a legacy license package that is no longer provided by Siemens, it has been replaced by a license called \textit{NX Advanced Simulation (NX13500)} which has similar capabilities. If Advanced Simulation should be used at Andritz it is necessary to purchase additional licenses and,therefore, the cost must be considered.
+
+Previous NX licenses where purchased from Conex Software, and the price information they have provided is presented in Table~\ref{tab:price_information}. The difference between the two licenses is that Advanced FEM does not include the NX Nastran Basic solver.
+
+Note that these licenses include a variety of features (for a complete description see~\cite{siemensnx}), but the functionality they provide is sufficient for the analyses that are performed at Andritz.
+
+\begin{table}[tb]
+	\caption{Price information for NX pre- and post-processing and solver features.}
+	\label{tab:price_information}
+	\begin{center}
+		\begin{tabular}{lcc}
+		\midrule
+		\midrule
+		\textbf{License} & \textbf{Lic. No.} & \textbf{Price} (SEK/license) \\
+		\midrule
+			NX Advanced Simulation & NX13500 & \num{137900} \\
+			NX Advanced FEM & NX12500 & \num{101920} \\
+		\midrule
+		\midrule
+		\end{tabular}
+	\end{center}
+\end{table}
+% subsection nx_licenses (end)
+
 \subsection{Advanced Simulation Workflow} % (fold)
 \label{sub:advanced_simulation_workflow}
+To perform a FEA in Advanced Simulation the starting point is a \texttt{part} file describing the CAD model. When a new simulation is started three files are created.
+\begin{itemize}
+	\item The \textit{idealised} \texttt{part} file is associatively connected (optionally) to the original CAD model, and the purpose of this file is to create a simplified model of the original CAD model.
+	\item The \texttt{fem} file represents the FE model, where material properties are defined and a mesh is created.
+	\item The \texttt{sim} file where boundary conditions and solver settings are specified.
+\end{itemize}
+These three files together define the simulation and they are tightly connected such that if there is a change in the idealised \texttt{part} the \texttt{fem} and \texttt{sim} file is automatically updated and the mesh and boundary conditions are adapted to the change. Since the idealised \texttt{part} file is associatively connected to the CAD model this feature is very efficient when a new design-analysis iteration is started.
 
+See Appendix~\ref{sec:nx_advanced_simulation_guide} for a detailed description of the workflow in Advanced Simulation. 
 % subsection advanced_simulation_workflow (end)
 
-Suggested workflow with NX Advanced Simulation:
-
-\begin{figure}[t]
-	\begin{center}
-		\includegraphics{WAVEGeometryLinker}
-	\end{center}
-	\caption{WAVE Geometry Linker dialogue box in NX.}
-	\label{fig:WAVEGeometryLinker}
-\end{figure}
 % subsection using_nx_advanced_simulation (end)
 
 \section{Salomé API Script} % (fold)
@@ -129,7 +154,7 @@ In this section a new, more efficient, workflow is proposed that utilise the fun
 \begin{itemize}
 	\item The synchronous tool WAVE Geometry Linker creates a copy of the CAD model that is associative, therefore, any change to the CAD model can update the FE model in NX. If groups are defined in NX, it is only necessary to define them at the initial stage of the analysis since they continue to exist even if the CAD model is changed (the groups will adapt to the changes). This is very efficient if there are several iterations of the product development.
 	\item The groups are imported to Salomé with the function \texttt{CreateGroups}, this is a simple and time-efficient process that requires very little from the user. Creating a mesh, whether it contains contacts or not, is automated by the functions \texttt{CreateMesh}, \texttt{PartitionShape} and \texttt{CreateSubMesh}, the only manual work is to adjust the mesh settings.
-	\item The mesh groups that are required by Code Aster are automatically created by \texttt{CreateMesh} and \texttt{CreateSubMesh}.
+	\item The mesh definitions, and the groups that are required by Code Aster, are automatically created by \texttt{CreateMesh} and \texttt{CreateSubMesh}.
 \end{itemize}
 
 % The proposed workflow is presented in Figure~\ref{fig:script_workflow}.

@@ -1,0 +1,27 @@
+\section{NX}
+In this section I will describe NX and the different areas of NX. NX is a software developed by Siemens for Digital Product Development. 
+
+\subsection{General Work Process for Advanced Simulation}
+In this section I will describe the process for taking a model/part from NX via Teamcenter and exporting it as a \texttt{.step} file, and then import it in native NX where simulations are performed.
+
+\begin{enumerate}
+\item (Describe how to export a part in \texttt{.step} format)
+\item Go to \emph{File}$\rightarrow$\emph{Import}$\rightarrow$\emph{STEP203...} and choose the part you wish to import.
+\item Choose application from \emph{Start}$\downarrow$\emph{Advanced Simulation}.
+\item Right-click on the \texttt{.sim} file and choose \emph{New FEM and Simulation...}.
+\item Right-click on the \texttt{.fem} file and choose \emph{Make displayed part}.
+\item Right-click on the \texttt{.fem} file and choose \emph{New Mesh}$\rightarrow$\emph{2D}$\rightarrow$\emph{Automatic...}.
+\item 
+\end{enumerate}
+
+\subsection{Move Object to Absolute Coordinate System}
+If a object or assembly is not oriented in a convenient fashion with respect to the absolute coordinate system, then the object is preferrably moved to the ACS. This is particularly important if an axisymmetric simulation is at hand, since the symmetry axis of the object needs to coincide with the $z$ axis.
+\begin{enumerate}
+\item Open the object and go to either Modelling or Advanced Simulation.
+\item Press \texttt{ctrl-t} to open \emph{Move Object}.
+\item Select the object that needs to be moved.
+\item Choose \emph{Motion$\rightarrow$CSYS to CSYS}.
+\item Specify the \emph{From CSYS} by clicking on \emph{CSYS dialog} to enter \emph{CSYS}.
+\item Choose \emph{Type$\downarrow$CSYS of object} and select object.
+\item Specify the \emph{To CSYS}, and choose \emph{Absolute CSYS}.
+\end{enumerate}

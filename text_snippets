@@ -1,0 +1,12 @@
+FEA:
+---------------------------------------
+Castings and machined parts are natural fit for CAD and FEA link, whereas sheet metal parts or assemblies and thin-walled castings are better addressed with an analysis-specific geometry approach
+p. 178
+
+Patches are used to provide more control over the mesh.
+p. 194
+
+(Discussion about cost-benefit of cleaning the geometry.)
+p. 200
+
+
